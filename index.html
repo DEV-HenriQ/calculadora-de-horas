@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Calculadora de Ponto</title>
+      <link rel="shortcut icon" href="./IMG/timer-icon.svg" type="image/x-icon">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- https://ekoopmans.github.io/html2pdf.js/ -->
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="./CSS/index.css">
+      <link rel="stylesheet" href="./CSS/query.css">
+      <!-- SCRIPTS (NÃO ESQUECER DO ATRIBUTO 'DEFER') -->
+      <script src="./JS/plusBTN.js" defer></script>
+      <script src="./JS/saveLines.js" defer></script>
+      <script src="./JS/loadLines.js" defer></script>
+      <script src="./JS/reset.js" defer></script>
+      <script src="./JS/calc.js" defer></script>
+   </head>
+   <body onload="loadLines(), autoSave()" id="body">
+      <header class="header">
+         <h1><a href="./index.html">Calculadora de Ponto</a></h1>
+         <div>
+            <h3>Contatos:</h3>
+            <div class="links">
+               <a href="https://github.com/DEV-HenriQ" target="_blank">
+                  <img src="./IMG/ICONS/github.svg" alt="github logo">
+                  Github
+               </a>
+               <a href="https://wa.me/5581983343846" target="_blank">
+                  <img src="./IMG/ICONS/whatsapp.svg" alt="whatsapp logo"> Whatsapp
+               </a>
+               <a href="mailto:devjosehenrique@gmail.com" target="_blank">
+                  <img src="./IMG/ICONS/envelope.svg" alt="email img"> E-mail
+               </a>
+            </div>
+         </div>
+      </header>
+      <main class="main">
+         <div class="explain-site">
+            <h1>
+               Descubra o tempo que você dedica ao trabalho!
+            </h1>
+            <p>
+               Quando estamos usando um sistema de ponto digital em nosso emprego, muitas vezes nos perguntamos: "Será que devo horas ou será que me devem horas?"
+            </p>
+            <p>
+               Para solucionar essa questão, criei um site incrivelmente intuitivo que permite que você acompanhe suas horas de maneira simples e descomplicada. Você só precisa inserir as horas trabalhadas e clicar no botão CALCULAR e o site contará e mostrará exatamente quanto tempo você investiu no trabalho. Em caso de dúvidas sobre como operar a tabela para calcular suas horas, acesse as <a href="#instrucoes-da-calculadora">instruções</a> criadas para te guiar.
+            </p>
+            <p>
+               Então, por que esperar? Comece agora mesmo a controlar suas horas de trabalho e elimine preocupações no final do mês!
+            </p>              
+         </div>
+
+         <div class="table-container">
+            <h1 class="title" id="tabela-de-horarios">TABELA DE HORÁRIOS</h1>
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th>Data</th>
+                     <th>Entrada</th>
+                     <th>Pausa (almoço)</th>
+                     <th>Volta (almoço)</th>
+                     <th>Saída</th>
+                     <th>Total</th>
+                  </tr>
+               </thead>
+
+               <tbody id="tbody">
+                  <tr>
+                     <td><input type="date" class="dia"></td>
+                     <td><input type="time" class="entrada"></td>
+                     <td><input type="time" class="pausa"></td>
+                     <td><input type="time" class="volta"></td>
+                     <td><input type="time" class="saida"></td>
+                     <td><input type="time" class="total" disabled></td>
+                     <td class="cursor"><div class="plusBTN"><img src="./IMG/ICONS/plus-lg.svg" alt="plus logo"></div></td>
+                  </tr>
+               </tbody>
+            </table>
+
+            <div class="results-area">
+               <p>Horas Feitas no total: <span class="totalTime">00:00</span></p>
+               <p class="message">Calcule para ver o resultado!</p>
+            </div>
+         </div>
+
+         <div class="buttons-area">
+            <button id="calcBTN">CALCULAR</button>
+            <button id="resetBTN">ZERAR</button>
+            <button id="downloadBTN">BAIXAR</button>
+         </div>
+      </main>
+
+      <article>
+         <div class="instructions-container">
+            <h2 class="h" id="instrucoes-da-calculadora">
+               Instruções da Calculadora
+            </h2>
+
+            <p>
+               A calculadora é intuitiva por si própria, mas para ajudar aqueles que estão com dificuldades de compreender como o site funciona, separei aqui algumas explicações e instruções que farão com que você consiga acessar e tirar proveito do site. Vamos lá?
+            </p>
+
+            <h3 class="h">
+               Compreendendo a tabela
+            </h3>
+
+            <p>
+               A <a href="#tabela-de-horarios">Tabela de horários</a> serve para acompanhar as horas trabalhadas. Você irá inserir os dados em cada linha e clicar no botão <a href="#botao-calcular">CALCULAR</a>. Após isso, o site mostrará o total de horas feitas e seu saldo de horas, baseado em um sistema em que você deve trabalhar <span class="horas-por-dia">8</span> horas por dia.
+            </p>
+
+            <p>
+               Cada linha da tabela é um dia trabalhado. Cada coluna representa um tipo de dado. Os dados da tabela são divididos em: <a href="#campos-de-entrada">Campos de entrada</a>, <a href="#campo-de-saida">Campo de saída   </a> e <a href="#botoes-de-acao">Botões de Ação</a>.
+            </p>
+
+            <h4 class="h" id="campos-de-entrada">
+               Campos de entrada
+            </h4>
+
+            <p>
+               A <a href="#tabela-de-horarios">Tabela de horários</a> tem alguns campos de entrada, onde o usuário pode inserir os dados. São eles: <a href="#dia">Data</a>, <a href="#entrada">Entrada</a>, <a href="#pausa">Pausa (almoço)</a>, <a href="#volta">Volta  (almoço)</a> e <a href="#saida">Saída</a>.
+            </p>
+
+            <h5 class="h" id="dia">
+               Data
+            </h5>
+
+            <p>
+               No campo de entrada 'Data', o usuário informa o a data que os horários foram registrados. Ao clicar sobre o campo de entrada, ele irá abrir um calendário onde você poderá informar uma data para registrar as horas.
+            </p>
+
+            <h5 class="h" id="entrada">
+               Entrada
+            </h5>
+
+            <p>
+               No campo de entrada 'Entrada' você irá informar a hora que chegou no trabalho, ou seja, a hora que você entrou na contagem de horas.
+            </p>
+
+            <h5 class="h" id="pausa">
+               Pausa (almoço)
+            </h5>
+
+            <p>
+               No campo de entrada 'Pausa (almoço)' você informa a hora em que você parou para ir almoçar, pausando a contagem.
+            </p>
+
+            <h5 class="h" id="volta">
+               Volta (almoço)
+            </h5>
+
+            <p>
+               No campo de entrada 'Volta (almoço)' você informa a hora em que você retornou do almoço, voltando para o trabalho e dando continuidade na contagem.
+            </p>
+
+            <h5 class="h" id="saida">
+               Saída
+            </h5>
+
+            <p>
+               No campo de entrada 'Saída' você informa a hora que largou, saindo do trabalho e encerrando a contagem de horas.
+            </p>
+
+            <h4 class="h" id="campo-de-saida">
+               Campo de saída
+            </h4>
+
+            <p>
+               Nessa tabela temos um campo de saída, que se encontra na penúltima coluna, que é identificada com o título de <a href="#total">Total</a>.
+            </p>
+
+            <h5 class="h" id="total">
+               Total
+            </h5>
+
+            <p>
+               O campo de saída 'Total' mostra ao usuário, ao clicar no botão <a href="#bota-calcular">CALCULAR</a>, as horas que ele trabalhou naquele dia. Cada linha irá mostrar o resultado de horas totais trabalhadas naquele dia específico.
+            </p>
+
+            <h4 class="h" id="botoes-de-acao">
+               Botões de Ação
+            </h4>
+
+            <p>
+               Botões de ação são botões onde podemos modificar a estrutura da <a href="#tabela-de-horarios">Tabela de Horários</a>. Eles sempre ficam no final da tabela, da esquerda para a direita. Nessa tabela temos dois botões de ação: <a href="#adicionar-linha">Adicionar linha</a> e <a href="#remover-linha">Remover linha</a>.
+            </p>
+
+            <h5 class="h" id="adicionar-linha">
+               Adicionar linha
+            </h5>
+
+            <p>
+               Ao final da primeira linha da tabela, você encontrará este botão: <img src="./IMG/addBtn.JPG" alt="+" width="20px" height="20px">, que servirá para adicionar linhas na tabela. Basta clicar sobre ele que uma nova linha será adicionada. Ele fica somente na primeira linha da tabela, os demais são botões de <a href="#remover-linha">Remover Linha</a>.
+            </p>
+
+            <h5 class="h" id="remover-linha">
+               Remover linha
+            </h5>
+
+            <p>
+               Ao clicar em 'Adicionar Linha', surgirá uma nova linha na tabela igual a primeira, porém sem os dados e o botão de ação será este aqui: <img src="./IMG/removeBtn.JPG" alt="x" width="20px" height="20px">. Esse botão serve para remover a linha onde ele está, e vai apagar todos os dados existentes naquela linha. Cada linha que for adicionada terá o seu botão de Remover linha, exceto a primeira que tem o botão de <a href="#adicionar-linha">Adicionar Linha</a> fixado à ela.
+            </p>
+
+            <h3 class="h" id="botoes-da-tabela">
+               Botões da Tabela
+            </h3>
+
+            <p>
+               Os botões da tabela estão logo abaixo da <a href="#area-de-resultados">Área de Resultados</a>. Nessa versão, temos 3 deles: <a href="#botao-calcular">CALCULAR</a>, <a href="#botao-zerar">ZERAR</a> e <a href="#botao-baixar">BAIXAR</a>.
+            </p>
+
+            <h4 class="h" id="botao-calcular">
+               Botão CALCULAR
+            </h4>
+
+            <p>
+               O botão CALCULAR é o principal botão da tabela. Com ele você irá saber quantas horas você fez em cada dia e saber como está seu saldo no banco de horas. Você precisa inserir TODOS os dados nos <a href="#campos-de-entrada">campos de entrada</a> antes de CLICAR em CALCULAR, ou ele irá disparar alguns erros...
+            </p>
+
+            <h5 class="h">
+               Erro de dados vazios
+            </h5>
+
+            <p>
+               Se algum dado estiver vazio, ele não fará o cálculo. Preencha todos os dados antes de clicar em CALCULAR
+            </p>
+
+            <figure>
+               <img src="./IMG/empty-data.JPG" alt="empty-data-error" class="img">
+               <figcaption>Exemplo de erro com dados vazios</figcaption>
+            </figure>
+
+            <h5 class="h">
+               Erro de conflito de dados
+            </h5>
+
+            <p>
+               É muito comum erros de digitação e inserção de dados. Por isso coloquei um verificador de coerência no botão de CALCULAR. Pensa comigo: Se eu entrei no trabalho de 07:00, não teria como eu sair de 06:50 para ir almoçar, pois é uma hora inferior a que eu entrei. Por isso, ao digitar um horário inferior nos pares de <a href="#campos-de-entrada">campos de entrada</a>: <a href="#entrada">Entrada</a> e <a href="#pausa">Pausa (almoço)</a> ele vai mostrar uma mensagem de erro parecida com a imagem abaixo. 
+            </p>
+
+            <figure>
+               <img src="./IMG/incoherence-data.JPG" alt="data-error-incoherence" class="img">
+               <figcaption>Exemplo de conflito de dados</figcaption>
+            </figure>
+
+            <p>
+               Isso também ocorre nos pares <a href="#volta">Volta (almoço)</a> e <a href="#saida">Saída</a>.
+            </p>
+
+            <p>É importante sempre preencher os dados atentamente para não ocorrer erros de cálculo.</p>
+
+            <h4 class="h" id="botao-zerar">
+               Botão ZERAR
+            </h4>
+
+            <p>
+               O botão ZERAR reseta a tabela, apagando todos os dados e deixando a tabela com apenas uma linha, assim como na primeira vez que o site é acessado. Para fazer isso, clique em ZERAR e depois na caixa de diálogo confirme sua escolha.
+            </p>
+
+            <figure>
+               <img src="./IMG/reset-data.JPG" alt="reset-data-button" class="img">
+               <figcaption>Exemplo de confirmação ZERAR</figcaption>
+            </figure>
+
+            <h4 class="h" id="botao-baixar">
+               Botão BAIXAR
+            </h4>
+
+            <p>
+               O botão BAIXAR serve para salvar sua tabela em PDF. Essa funcionalidade é muito útil caso você queira mostrar os seus dados com as horas trabalhadas para alguém ou até mesmo para guardar os dados de um mês específico. Clique em BAIXAR e tenha sua tabela salva no seu dispositivo!
+            </p>
+
+            <h3 class="h" id="area-de-resultados">
+               Área de Resultados
+            </h3>
+
+            <p>
+               Após a Tabela, podemos identificar uma área onde irá ser mostrado quanto de horas o trabalhador fez e o seu saldo no banco de horas. O saldo pode ser <a href="#positivo">positivo</a> ou <a href="#negativo">negativo</a>.
+            </p>
+
+            <figure>
+               <img src="./IMG/result-area.JPG" alt="result-area-PNG" class="img2">
+               <figcaption>Área de Resultados</figcaption>
+            </figure>
+
+            <h4 class="h">
+               Horas Feitas no Total
+            </h4>
+
+            <p>
+               Ao inserir todos os dados e clicar no botão CALCULAR o site irá selecionar todos os campos de saída <a href="#total">Total</a> de todas as linhas e calcular quantas horas você fez em cada dia. Depois irá somar todas as horas feitas em todos os dias e colocará esse resultado na primeira linha da <a href="#area-de-resultados">Área de Resultados.</a>
+            </p>
+
+            <h4 class="h" id="positivo">
+               Saldo Positivo
+            </h4>
+
+            <p>
+               Para ficar com um banco de horas positivo, é necessário fazer uma média de pelo menos <span class="horas-por-dia">8</span> horas por dia todos os dias trabalhados. Caso consiga, aparecerá uma mensagem dizendo que você está com saldo positivo no banco de horas da empresa.
+            </p>
+
+            <figure>
+               <img src="./IMG/positive.JPG" alt="positive-example">
+               <figcaption>Exemplo de Saldo Positivo</figcaption>
+            </figure>
+
+            <h4 class="h" id="negativo">
+               Saldo Negativo
+            </h4>
+
+            <p>
+               Por outro lado, se você não fizer a média esperada para cada dia, você ficará com um saldo de horas negativo, passando a dever horas na empresa. Nesse caso uma mensagem dizendo que você está com saldo negativo aparecerá.
+            </p>
+
+            <figure>
+               <img src="./IMG/negative.JPG" alt="negative-example">
+               <figcaption>Exemplo de Saldo Negativo</figcaption>
+            </figure>
+
+            <h3 class="h">
+               Responsividade
+            </h3>
+
+            <p>
+               Se você estiver utilizando um dispositivo móvel com menos de 1250px de largura (tablets, smartphones e até alguns notebooks) o site irá se tornar responsivo para que você consiga acompanhar as suas horas no banco de horas, porém a funcionalidade <a href="#botao-baixar">BAIXAR</a> irá apresentar problemas. Para evitar isso, acesse o site através de um dispositivo maior para que você consiga imprimir sua tabela sem problemas.
+            </p>
+
+            <p>
+               A tabela não irá aparecer totalmente, cabendo ao usuário deslizar para o lado para ver o conteúdo completo. As funções são as mesmas, porém por ser um dispositivo com tela pequena, o conteúdo da tabela fica comprometido. Uma indicação de rolagem irá aparecer logo abaixo da tabela, indicando que o usuário pode deslizar para o lado.
+            </p>
+
+            <figure>
+               <img src="./IMG/mobile-table.gif" alt="mobile-table-gif" class="gif">
+               <figcaption>Exemplo de Tabela em smartphone</figcaption>
+            </figure>
+         </div>
+      </article>
+      <footer class="footer">
+         <span> &diams; Desenvolvido & Codificado por: &nbsp; Henri_Q &diams;</span>
+      </footer>
+   </body>
+
+   <script src="./JS/download.js"></script>
+</html>
