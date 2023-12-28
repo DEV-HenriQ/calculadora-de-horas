@@ -323,6 +323,11 @@ tbody tr td div img
    text-shadow: 2px 2px 5px #0F2027;
 }
 
+.instructions-container a:hover, .explain-site a:hover
+{
+   text-decoration: underline;
+}
+
 .instructions-container h2
 {
    font-size: 2.2rem;
@@ -378,3 +383,12 @@ tbody tr td div img
 {
    width: 100%;
 }
+
+#sumario
+{
+   margin-left: 2rem;
+}
+
+#sumario .principal-ul {margin-left: 1.4rem;}
+#sumario .secundaria-ul {margin-left: 1.4rem;}
+#sumario .terciaria-ul {margin-left: 1.4rem;}
