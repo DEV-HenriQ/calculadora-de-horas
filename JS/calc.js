@@ -113,7 +113,6 @@ function diminuirHoras(tempo1, tempo2, verification)
       else
       {
          let h = diminuirHoras(tempo2, tempo1, '')
-         console.log(h)
          return `Você está devendo <span class="time-message2">${transformToHours(h[0], h[1])}</span>`
       }
    }

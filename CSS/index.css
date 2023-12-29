@@ -134,7 +134,7 @@ body
    margin: .6rem 0;
 }
 
-.title {color: rgb(133, 150, 165); text-align: center; margin: 1rem 0; text-shadow: 2px 2px 2px #000;}
+.title {color: var(--texto-branco); text-align: center; margin: 1rem 0; text-shadow: 2px 2px 2px #000;}
 
 /* footer css*/
 
