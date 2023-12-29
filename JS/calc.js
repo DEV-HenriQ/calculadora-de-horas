@@ -33,8 +33,8 @@ function somarTudo()
 {
    const allTotal = document.querySelectorAll('.total')
    
-   let horas = [allTotal.length]
-   let minutos = [allTotal.length]
+   let horas = []
+   let minutos = []
 
    for (i = 0; i < allTotal.length; i++)
    {
@@ -59,17 +59,24 @@ function somarTudo()
       } while (mt >= 60)
    }
 
-   transformToHours(ht, mt)
-
    document.querySelector('.totalTime').innerHTML = transformToHours(ht, mt)
 }
 
 function transformToNumbers(texto)
 {
    const novaHora = []
-   novaHora[0] = Number(texto.slice(0,2))
-   novaHora[1] = Number(texto.slice(3,5))
-   return novaHora
+   if (texto.length < 6)
+   {
+      novaHora[0] = Number(texto.slice(0,2))
+      novaHora[1] = Number(texto.slice(3,5))
+      return novaHora
+   }
+   else
+   {
+      novaHora[0] = Number(texto.slice(0,3))
+      novaHora[1] = Number(texto.slice(4,6))
+      return novaHora
+   }
 }
 
 function transformToHours(hora, minuto)
@@ -81,11 +88,9 @@ function transformToHours(hora, minuto)
    if (minuto < 10)
    {
       minuto = `0${minuto}`
-   }
-
-   const horaFeita = `${hora}:${minuto}`
+   } 
    
-   return horaFeita
+   return `${hora}:${minuto}`
 }
 
 function diminuirHoras(tempo1, tempo2, verification)
@@ -108,6 +113,7 @@ function diminuirHoras(tempo1, tempo2, verification)
       else
       {
          let h = diminuirHoras(tempo2, tempo1, '')
+         console.log(h)
          return `Você está devendo <span class="time-message2">${transformToHours(h[0], h[1])}</span>`
       }
    }
@@ -115,8 +121,7 @@ function diminuirHoras(tempo1, tempo2, verification)
    if (verification !== '')
    {
       const hora = tempo2[0] - tempo1[0]
-      const novaHora = [hora, minuto]
-      return `Você tem <span class="time-message1" >${transformToHours(hora, minuto)}</span> de crédito!`
+      return (`Você tem <span class="time-message1" >${transformToHours(hora, minuto)}</span> de crédito!`)
    }
 
    const hora = tempo2[0] - tempo1[0]
@@ -171,10 +176,9 @@ function mostrarMensagem()
    let message = document.querySelector('.message')
    const allTotal = document.querySelectorAll('.total')
 
-   let horasPuras = 8*allTotal.length
-   let horasPuras2 = [horasPuras, 0]
+   let horasPuras = [8*(allTotal.length), 0]
    let horasFeitas = transformToNumbers(document.querySelector('.totalTime').innerHTML)
 
-   const resultado = diminuirHoras(horasPuras2, horasFeitas, 'teste')
+   const resultado = diminuirHoras(horasPuras, horasFeitas, 'teste')
    message.innerHTML = resultado
 }
