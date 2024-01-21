@@ -209,10 +209,22 @@ td input, td div
 
 td div
 {
+   min-width: 50px;
    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(237,3,32,0.87) 20.8%, rgba(242,121,1,0.84) 74.4% );
 }
 
-td div:hover, td input:hover
+tbody tr:nth-child(1) td:nth-child(8) div
+{
+   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(5, 232, 248, 0.945) 20.8%, rgba(4, 101, 165, 0.84) 74.4% );
+}
+
+tbody tr:nth-child(1) td:nth-child(7)
+{
+   min-width: 150px;
+   text-align: center;
+}
+
+td div:hover, td input:hover, tbody tr:nth-child(1) td:nth-child(8):hover div
 {
    background-image: linear-gradient( 109.6deg,  rgba(209,0,116,1) 11.2%, rgba(110,44,107,1) 91.1% );
 }
@@ -392,3 +404,8 @@ tbody tr td div img
 #sumario .principal-ul {margin-left: 1.4rem;}
 #sumario .secundaria-ul {margin-left: 1.4rem;}
 #sumario .terciaria-ul {margin-left: 1.4rem;}
+
+.checkbox img
+{
+   width: 50px;
+}

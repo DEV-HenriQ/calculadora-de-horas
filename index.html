@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-   <head>
+   <head> 
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596007797678704"
      crossorigin="anonymous"></script>
    </head>
-   <body onload="loadLines(), autoSave()" id="body">
+   <body onload="loadLines(), putCheckFunction(), autoSave()" id="body">
       <header class="header">
          <h1><a href="./index.html">Calculadora de Horas</a></h1>
          <div>
@@ -63,6 +63,7 @@
             <table class="table">
                <thead>
                   <tr>
+                     <th>Marcar Domingo?</th>
                      <th>Data</th>
                      <th>Entrada</th>
                      <th>Pausa (almoço)</th>
@@ -73,7 +74,8 @@
                </thead>
 
                <tbody id="tbody">
-                  <tr>
+                  <tr class="tr">
+                     <td class="checkbox cursor"><img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado"></td>
                      <td><input type="date" class="dia"></td>
                      <td><input type="time" class="entrada"></td>
                      <td><input type="time" class="pausa"></td>
@@ -225,6 +227,11 @@
                   <li>
                      <a href="#auto-salvamento">
                         Auto Salvamento
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#novidades">
+                        Novidades
                      </a>
                   </li>
                </ul>
@@ -468,7 +475,16 @@
             </h3>
 
             <p>
-               O site realiza o salvamento automático dos dados a cada 2 segundos. No entanto, é crucial inseri-los na ordem correta para garantir a correta preservação nos registros do navegador. Certifique-se de digitar em sequência, da esquerda para a direita, para garantir a precisão do salvamento.
+               O site realiza o salvamento automático dos dados a cada segundo. No entanto, é crucial inseri-los na ordem da esquerda para a direita para garantir a correta preservação nos registros do navegador. Certifique-se de digitar em sequência, da esquerda para a direita, para garantir a precisão do salvamento.
+            </p>
+
+            <h3 class="h" id="novidades">
+               Novidades!
+            </h3>
+
+            <h4 class="h">Marcar Domingo?</h4>
+            <p>
+               Marcar Domingo consiste em avisar se esse dia é um domingo ou não. Na empresa, o domingo trabalhado não conta no banco de horas, por isso ele não será calculado se for selecionado.
             </p>
          </div>
       </article>

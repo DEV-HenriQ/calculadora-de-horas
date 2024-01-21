@@ -12,16 +12,16 @@ function calc()
 
    for (i = 0; i < allTr.length; i++)
    {
-      const entrada = allTr[i].children[1].children[0].value
-      const pausa = allTr[i].children[2].children[0].value
-      const volta = allTr[i].children[3].children[0].value
-      const saida = allTr[i].children[4].children[0].value
+      const entrada = allTr[i].children[2].children[0].value
+      const pausa = allTr[i].children[3].children[0].value
+      const volta = allTr[i].children[4].children[0].value
+      const saida = allTr[i].children[5].children[0].value
 
       
       
       const total = somarHoras(diminuirHoras(transformToNumbers(entrada), transformToNumbers(pausa), ''), diminuirHoras(transformToNumbers(volta), transformToNumbers(saida), ''))
 
-      allTr[i].children[5].children[0].value = total
+      allTr[i].children[6].children[0].value = total
    }
 
    somarTudo()
@@ -43,11 +43,20 @@ function somarTudo()
    }
 
    let ht = 0; let mt = 0;
+   const allTroll = document.querySelectorAll('.tr')
 
    for (i = 0; i < allTotal.length; i++)
    {
-      ht += horas[i]
-      mt += minutos[i]
+      if (allTroll[i].children[0]. innerHTML == `<img src="./IMG/marcado-removebg-preview.png" alt="imagem de checkbox marcado">`)
+      {
+         ht += 0
+         mt += 0
+      }
+      else
+      {
+         ht += horas[i]
+         mt += minutos[i]
+      }
    }
 
    if (mt >= 60)
@@ -153,11 +162,11 @@ function verifyEmptyData()
 
    for (i = 0; i < allTr.length; i++)
    {
-      const dia = allTr[i].children[0].children[0].value
-      const entrada = allTr[i].children[1].children[0].value
-      const pausa = allTr[i].children[2].children[0].value
-      const volta = allTr[i].children[3].children[0].value
-      const saida = allTr[i].children[4].children[0].value
+      const dia = allTr[i].children[1].children[0].value
+      const entrada = allTr[i].children[2].children[0].value
+      const pausa = allTr[i].children[3].children[0].value
+      const volta = allTr[i].children[4].children[0].value
+      const saida = allTr[i].children[5].children[0].value
 
       if(dia.length <=0 || entrada.length <=0  || pausa.length <=0 || volta.length <=0 || saida.length <=0)
       {
@@ -173,9 +182,18 @@ function verifyEmptyData()
 function mostrarMensagem()
 {
    let message = document.querySelector('.message')
-   const allTotal = document.querySelectorAll('.total')
+   const allTotal = document.querySelectorAll('.tr')
+   let semDomingos = allTotal.length
 
-   let horasPuras = [8*(allTotal.length), 0]
+   for (i = 0; i < allTotal.length; i++)
+   {
+      if (allTotal[i].children[0].innerHTML == `<img src="./IMG/marcado-removebg-preview.png" alt="imagem de checkbox marcado">`)
+      {
+         semDomingos--
+      }
+   }
+
+   let horasPuras = [8*(semDomingos), 0]
    let horasFeitas = transformToNumbers(document.querySelector('.totalTime').innerHTML)
 
    const resultado = diminuirHoras(horasPuras, horasFeitas, 'teste')
