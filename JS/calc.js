@@ -194,6 +194,9 @@ function mostrarMensagem()
       if (allTotal[i].children[1].innerHTML == `<img src="./IMG/marcado-removebg-preview.png" alt="imagem de checkbox marcado">`)
       {
          semDomingos--
+      }
+      if (allTotal[i].children[0].innerHTML == `<img src="./IMG/marcado-removebg-preview.png" alt="imagem de checkbox marcado">` && allTotal[i].children[1].innerHTML == `<img src="./IMG/marcado-removebg-preview.png" alt="imagem de checkbox marcado">`)
+      {
          flag--
       }
    }
