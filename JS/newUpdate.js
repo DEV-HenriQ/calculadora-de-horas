@@ -11,7 +11,7 @@ function novaAtualizacao()
 {
    if (localStorage.getItem('update') == 'false')
    {
-      if (confirm(`NOVA ATUALIZAÇÃO!\n\nCLIQUE NO BOTÃO 'ZERAR' PARA ATUALIZAR A TABELA\n\nObs.: Dados serão perdidos`))
+      if (confirm(`NOVA ATUALIZAÇÃO!\n\nCLIQUE NO BOTÃO 'OK' PARA ATUALIZAR A TABELA\n\nObs.: Dados serão perdidos`))
       {
          localStorage.setItem('update', true)
          resetTableUpdate()
