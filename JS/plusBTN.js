@@ -6,6 +6,7 @@ function addRow()
    const tbody = document.querySelector('#tbody')
 
    const tr = document.createElement('tr')
+   const tdx = document.createElement('td')
    const td1 = document.createElement('td')
    const td2 = document.createElement('td')
    const td3 = document.createElement('td')
@@ -16,6 +17,7 @@ function addRow()
    const td8 = document.createElement('td')
    td8.classList.add('cursor')
 
+   const inputTdx = `<img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado">`
    const inputTd1 = `<img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado">`
    const inputTd2 = document.createElement('input')
    const inputTd3 = document.createElement('input')
@@ -48,7 +50,9 @@ function addRow()
    divTd8.innerHTML = `<img src="./IMG/ICONS/dash-circle-fill.svg" alt="plus logo">`
 
    td1.innerHTML = inputTd1
+   tdx.innerHTML = inputTdx
    td1.classList.add('checkbox', 'cursor')
+   tdx.classList.add('checkbox', 'cursor')
    td2.append(inputTd2)
    td3.append(inputTd3)
    td4.append(inputTd4)
@@ -56,7 +60,7 @@ function addRow()
    td6.append(inputTd6)
    td7.append(inputTd7)
    td8.append(divTd8)
-   tr.append(td1, td2, td3, td4, td5, td6, td7, td8)
+   tr.append(tdx, td1, td2, td3, td4, td5, td6, td7, td8)
    tr.classList.add('tr')
    tbody.append(tr)
 

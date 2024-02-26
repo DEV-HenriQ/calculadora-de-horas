@@ -19,11 +19,12 @@
       <script src="./JS/loadLines.js" defer></script>
       <script src="./JS/reset.js" defer></script>
       <script src="./JS/calc.js" defer></script>
+      <script src="./JS/newUpdate.js" defer></script>
 
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7596007797678704"
      crossorigin="anonymous"></script>
    </head>
-   <body onload="loadLines(), putCheckFunction(), autoSave()" id="body">
+   <body onload="loadLines(), putCheckFunction(), autoSave(), setUpdate()" id="body">
       <header class="header">
          <h1><a href="./index.html">Calculadora de Horas</a></h1>
          <div>
@@ -63,6 +64,7 @@
             <table class="table">
                <thead>
                   <tr>
+                     <th>Marcar 7 Horas?</th>
                      <th>Marcar Domingo?</th>
                      <th>Data</th>
                      <th>Entrada</th>
@@ -75,6 +77,7 @@
 
                <tbody id="tbody">
                   <tr class="tr">
+                     <td class="checkbox cursor"><img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado"></td>
                      <td class="checkbox cursor"><img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado"></td>
                      <td><input type="date" class="dia"></td>
                      <td><input type="time" class="entrada"></td>

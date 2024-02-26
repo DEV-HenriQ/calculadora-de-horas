@@ -1,11 +1,27 @@
-document.querySelector('#resetBTN').addEventListener('click', resetTable)
-
-function resetTable()
+function setUpdate()
 {
-   if(!confirm('DADOS SERÃO EXCLUÍDOS. ZERAR TABELA?'))
+   if (localStorage.getItem('update') == null)
    {
-      return
+      localStorage.setItem('update', false)
+      novaAtualizacao()
    }
+}
+
+function novaAtualizacao()
+{
+   if (localStorage.getItem('update') == 'false')
+   {
+      if (confirm(`NOVA ATUALIZAÇÃO!\n\nCLIQUE NO BOTÃO 'ZERAR' PARA ATUALIZAR A TABELA\n\nObs.: Dados serão perdidos`))
+      {
+         localStorage.setItem('update', true)
+         resetTableUpdate()
+      }
+      else {novaAtualizacao()}
+   }
+}
+
+function resetTableUpdate()
+{
    const tbody = document.querySelector('#tbody')
    tbody.innerHTML = `<tr class="tr">
    <td class="checkbox cursor"><img src="./IMG/desmarcado-removebg-preview.png" alt="imagem de checkbox desmarcado"></td>
